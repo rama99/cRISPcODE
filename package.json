@@ -1,0 +1,19 @@
+{
+  "name": "mean",
+  "version": "1.0.0",
+  "description": "mean application",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rama99/cRISPcODE.git"
+  },
+  "author": "Rama Kishore <rama.kishore@gmail.com> (http://www.dummytest.io)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rama99/cRISPcODE/issues"
+  },
+  "homepage": "https://github.com/rama99/cRISPcODE#readme"
+}
