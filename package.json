@@ -15,5 +15,22 @@
   "bugs": {
     "url": "https://github.com/rama99/cRISPcODE/issues"
   },
-  "homepage": "https://github.com/rama99/cRISPcODE#readme"
+  "homepage": "https://github.com/rama99/cRISPcODE#readme",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "co": "^4.6.0",
+    "co-express": "^1.2.1",
+    "compression": "^1.6.2",
+    "cookie-parser": "^1.4.1",
+    "csurf": "^1.8.3",
+    "ejs": "^2.4.1",
+    "express": "^4.13.4",
+    "express-session": "^1.13.0",
+    "method-override": "^2.3.5",
+    "mongodb": "^2.1.19",
+    "morgan": "^1.7.0",
+    "multer": "^1.1.0",
+    "view-helpers": "^0.1.5",
+    "winston": "^2.2.0"
+  }
 }
