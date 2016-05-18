@@ -4,7 +4,7 @@ const users = require('../app/controllers/users');
 
 module.exports = function(app) {
 
-app.get('/' , users.save);
-app.post('/', users.save);
+app.get('/' , users.home);
+//app.post('/', users.save);
 
 }
