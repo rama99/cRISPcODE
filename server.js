@@ -18,11 +18,17 @@ const config = require('./config/config').config;
 
 const app = express();
 
+// set express middlewares
+require('./config/express')(app);
+
+//  set routes
+require('./config/routes')(app);
+
 var connect = function * () {
   try {
         yield MongoClient.connect(config.mongodbUrl);
         app.listen(config.mongodbPort);
-        console.log('Xpress started');
+        console.log('Xpress started' , config.mongodbPort);
       }
       catch(err) {
         console.log(chalk.red(err.message));

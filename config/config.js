@@ -4,5 +4,5 @@ const mongodbPort = 3009;
 
 exports.config = {
   mongodbUrl:mongodbUrl,
-  port:mongodbPort
+  mongodbPort:mongodbPort
 }
