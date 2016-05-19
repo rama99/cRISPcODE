@@ -11,13 +11,15 @@ app.get('/' , function(req,res) {
   res.sendFile(path.join(config.root , 'app' , 'views' , 'index.html'));
 });
 
+// GET login
+app.get('/users/signin' , users.login);
+
 // GET sign up page
 app.get('/users/signup/' , users.signup);
 
 // POST sign up page
-app.post('/users/signup' , function(req , res , next ){
-  console.log(req.body);
-  next();
-} , users.newUser);
+app.post('/users/signup' , users.newUser);
+
+
 
 }
