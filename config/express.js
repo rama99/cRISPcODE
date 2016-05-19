@@ -10,7 +10,7 @@ module.exports = function(app) {
 
 app.set('view engine' , 'ejs');
 app.set('views', path.join(config.root , 'app' , 'views'));
-console.log(path.join(__dirname , '..'));
+// console.log(path.join(__dirname , '..'));
 // path.join(__dirname, 'app/views')
 
 }
