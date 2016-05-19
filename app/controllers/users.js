@@ -1,7 +1,9 @@
+'use strict';
 const wrap = require('co-express');
 const MongoClient = require('mongodb').MongoClient;
 const userModel = require('../models/userModel');
 const config = require('../../config/config').config;
+const only = require('only');
 
 var db;
 
@@ -23,7 +25,12 @@ res.render('users/signup');
 // POST for SignUp
 module.exports.newUser = wrap( function *(req , res) {
 
-var user = {
+console.log("xxxx" + req.body);
+let user = only(req.body ,'login firstName lastName password email' );
+//activeFlag
+user.isActive = true;
+
+/*var user = {
   firstName: "rama",
   lastName: "kishore",
   login: "rama",
@@ -32,8 +39,7 @@ var user = {
   phone: "1234",
   dateTime: "1212121",
   activeFlag: "12121"  //userImage
-
-}
+}*/
 
   db = yield connect();
   yield db.collection('users').insertOne(user);

@@ -15,6 +15,9 @@ app.get('/' , function(req,res) {
 app.get('/users/signup/' , users.signup);
 
 // POST sign up page
-app.post('/users/signup' , users.newUser);
+app.post('/users/signup' , function(req , res , next ){
+  console.log(req.body);
+  next();
+} , users.newUser);
 
 }

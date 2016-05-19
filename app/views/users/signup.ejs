@@ -7,11 +7,69 @@
   <link href="../css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body ng-app="TicketApp">
+
+
 <div class="container" ng-controller="signUpCtrl">
-  <h2>Sign Up</h2>
-  <form method="post" action="signup">
-    <input type="button" ng-click="signUp()" name="btnSubmit" value="Save"/>
-  </form>
+
+<h3>Create New User</h3>
+
+<form class="form-horizontal" role="form">
+
+ <div class="form-group">
+     <label class="col-sm-2 control-label">Login *</label>
+    <div class="col-md-6">
+        <input type="text" id="LOGIN" name="LOGIN" class="form-control" maxlength="25" data-ng-model="user.login" />
+    </div>
+ </div>
+
+ <div class="form-group">
+     <label class="col-sm-2 control-label">First Name *</label>
+    <div class="col-md-6">
+        <input type="text" id="FIRST_NAME" name="FIRST_NAME" maxlength="25" class="form-control" ng-model="user.firstName" />
+    </div>
+ </div>
+
+ <div class="form-group">
+      <label class="col-sm-2 control-label">Last Name *</label>
+    <div class="col-md-6">
+        <input type="text" id="LAST_NAME" name="LAST_NAME" maxlength="25" class="form-control" ng-model="user.lastName" />
+    </div>
+ </div>
+
+ <div class="form-group">
+     <label class="col-sm-2 control-label">Password *</label>
+    <div class="col-md-6">
+        <input type="password" id="PASSWORD" name="PASSWORD" maxlength="25" class="form-control" ng-model="user.password" />
+    </div>
+ </div>
+
+
+ <div class="form-group">
+     <label class="col-sm-2 control-label">Re Enter Password *</label>
+    <div class="col-md-6">
+        <input type="password" id="rePassWord" name="rePassWord" maxlength="25" class="form-control" ng-model="user.rePassWord" />
+    </div>
+     <div class="col-md-4"></div>
+ </div>
+
+
+ <div class="form-group">
+     <label class="col-sm-2 control-label">Email *</label>
+    <div class="col-md-6">
+        <input type="text" id="EMAIL" name="EMAIL" maxlength="50" class="form-control" ng-model="user.email" />
+    </div>
+ </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-1">
+      <input type="button" class="btn btn-primary form-control" data-ng-click="signUp()" value="Submit" />
+    </div>
+     <div class="col-sm-offset-1 col-sm-1">
+      <input type="button" value="Cancel" class="btn btn-warning form-control cancel" data-ng-click="cancel()" />
+     </div>
+  </div>
+</form>
 </div>
+
 </body>
 </html>
