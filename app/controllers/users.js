@@ -22,8 +22,21 @@ res.render('users/signup');
 
 // POST for SignUp
 module.exports.newUser = wrap( function *(req , res) {
+
+var user = {
+  firstName: "rama",
+  lastName: "kishore",
+  login: "rama",
+  password: "1234",
+  email: "rama.kishore@gmail.com",
+  phone: "1234",
+  dateTime: "1212121",
+  activeFlag: "12121"  //userImage
+
+}
+
   db = yield connect();
-  yield db.collection('users').insertOne({name:"KISHORE"});
+  yield db.collection('users').insertOne(user);
   console.log('saved');
   db.close();
 res.render('users/signup');

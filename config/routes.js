@@ -17,6 +17,4 @@ app.get('/users/signup/' , users.signup);
 // POST sign up page
 app.post('/users/signup' , users.newUser);
 
-
-
 }
