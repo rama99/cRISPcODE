@@ -11,7 +11,7 @@ alert('submit');
             })
             .then( function(response) {
                if(response.data.status === "SUCCESS") {
-               $window.location.href = '/users/signup';
+               $window.location.href = '/../home';
              }
              else {
                alert('error');

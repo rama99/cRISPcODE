@@ -16,6 +16,11 @@ module.exports.signin = function(req , res) {
   res.render('users/signin');
 }
 
+module.exports.home = wrap(function *(req , res) {
+ console.log('home-2');
+  res.render('home');
+});
+
 module.exports.validateSignin = wrap(function *(req , res) {
 let loginDetails = only(req.body , "userName password");
 let response = {};
@@ -36,9 +41,6 @@ res.send(JSON.stringify(response));
 
 });
 
-module.exports.home = wrap(function *(req , res) {
-  res.render('index');
-});
 
 // GET for SignUp
 module.exports.signup = wrap(function *(req , res) {

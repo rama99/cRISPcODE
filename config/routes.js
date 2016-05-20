@@ -12,14 +12,16 @@ app.get('/' , function(req,res) {
 });
 
 // GET login
-app.get('/users/signin' , function(req , res , next) {
-// dummy middleware to test error handling
-//throw new Error("test");
-next();
-} , users.signin);
+app.get('/users/signin' , users.signin);
 
 // POST SignIn
 app.post('/users/signin' , users.validateSignin);
+
+// GET Home Page
+app.get('/home' , function(req,res,next) {
+  console.log('home-1');
+  next();
+} , users.home);
 
 // GET sign up page
 app.get('/users/signup/' , users.signup);
