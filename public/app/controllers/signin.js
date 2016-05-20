@@ -10,6 +10,7 @@ alert('submit');
               data: $scope.user
             })
             .then( function(response) {
+              alert(response.data.status);
                if(response.data.status === "SUCCESS") {
                $window.location.href = '/../home';
              }

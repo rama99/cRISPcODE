@@ -28,6 +28,7 @@ let response = {};
 db = yield connect();
 var user = yield db.collection('users').findOne({login: loginDetails.userName , password: loginDetails.password , isActive:true });
 
+console.log(loginDetails.userName);
 if(user) {
 response.status = 'SUCCESS';
 }
