@@ -12,9 +12,29 @@ function connect()
   return MongoClient.connect(config.mongodbUrl);
 }
 
-module.exports.login = function(req , res) {
-  res.render('users/login');
+module.exports.signin = function(req , res) {
+  res.render('users/signin');
 }
+
+module.exports.validateSignin = wrap(function *(req , res) {
+let loginDetails = only(req.body , "userName password");
+let response = {};
+
+db = yield connect();
+var user = yield db.collection('users').findOne({login: loginDetails.userName , password: loginDetails.password , isActive:true });
+
+if(user) {
+response.status = 'SUCCESS';
+}
+else {
+response.status = 'ERROR';
+}
+
+db.close();
+res.setHeader('Content-Type', 'application/json');
+res.send(JSON.stringify(response));
+
+});
 
 module.exports.home = wrap(function *(req , res) {
   res.render('index');
@@ -30,6 +50,7 @@ res.render('users/signup');
 module.exports.newUser = wrap( function *(req , res) {
 
 let user = only(req.body ,'login firstName lastName password email' );
+
 //activeFlag
 user.isActive = true;
   db = yield connect();
@@ -37,4 +58,5 @@ user.isActive = true;
   console.log('saved');
   db.close();
 res.render('users/signup');
+
 });

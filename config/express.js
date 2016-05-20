@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Static files middleware
-app.use(express.static(config.root + '/public'));
+app.use(express.static(config.root + '/public/'));
 
 app.set('view engine' , 'ejs');
 app.set('views', path.join(config.root , 'app' , 'views'));
