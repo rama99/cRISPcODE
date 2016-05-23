@@ -1,0 +1,85 @@
+<html>
+<head>
+  <script src="/../scripts/jquery.min.js"></script>
+  <script src="/../scripts/bootstrap.min.js"></script>
+  <script src="/../scripts/angular.min.js"></script>
+  <script src="/../app/app.js"></script>
+  <script src="/../app/controllers/create.js"></script>
+  <link href="/../css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body ng-app="TicketApp">
+<div class="container" ng-controller="createCtrl">
+  <h3>Create Ticket</h3>
+<form>
+<div class="form-group">
+    <label for="" class="col-sm-2 control-label" >Title *</label>
+    <div class="col-md-10">
+        <input type="text" id="subject" name="subject" ng-model="details.subject" class="form-control" maxlength=50 />
+    </div>
+ </div>
+
+<div class="form-group">
+    <label class="col-sm-2 control-label">Description *</label>
+    <div class="col-sm-10">
+        <textarea name="description" my-maxlength="500" id="description" ng-model="details.description"  class="form-control"></textarea>
+    </div>
+</div>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Project *</label>
+    <div class="col-sm-10">
+    <select ng-options="item.ID as item.NAME for item in depts" ng-model="details.deptID" class="form-control"></select>
+    </div>
+  </div>
+
+   <div class="form-group">
+    <label class="col-sm-2 control-label">Assign to User *</label>
+    <div class="col-sm-10">
+    <select ng-options="item._id as item.login for item in users" ng-model="details.assignedToUserID" class="form-control"></select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Priorty *</label>
+    <div class="col-sm-10">
+   <select class="form-control" ng-model="details.priorty">
+       <option value="">Select Priorty</option>
+       <option>Low</option>
+       <option>Medium</option>
+       <option>High</option>
+   </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Comments*</label>
+    <div class="col-sm-10">
+        <textarea name="comments" my-maxlength="500" id="comments" ng-model="details.comments"  class="form-control"></textarea>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label"></label>
+    <div class="col-sm-10">
+        <p>{{500 - details.comments.length}}/500 remaining</p>
+    </div>
+  </div>
+
+    <div class="form-group">
+    <label class="col-sm-2 control-label"></label>
+
+</div>
+
+    <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-2">
+      <input type="button" id="" name="" value="Submit" class="btn btn-primary form-control" />
+    </div>
+     <div class="col-sm-offset-2 col-sm-2">
+      <input type="button" value="Cancel" class="btn btn-warning form-control cancel"  />
+     </div>
+  </div>
+</form>
+</form>
+
+</body>
+</html>
