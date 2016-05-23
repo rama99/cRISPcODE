@@ -1,27 +1,52 @@
 var createCtrl = TicketApp.controller('createCtrl' , function($scope , $http) {
 $scope.details = {};
- $scope.details.assignedToUserID = '';
- 
+$scope.details.assignedToUserID = '';
+$scope.details.deptID = '';
+
 $scope.GetTicketLookUps = function() {
   $http({
           method: 'GET',
           url: './getLookups'
         })
         .then( function(response) {
-            alert(response.data);
-            response.data.unshift({
+
+            response.data.users.unshift({
                    _id: '',
                    login: "Select a User"
                });
 
-            $scope.users = response.data;
+               response.data.projects.unshift({
+                      _id: '',
+                      projectName: "Select a Project"
+                  });
+
+            $scope.users = response.data.users;
+            $scope.depts = response.data.projects;
         })
-        .catch(function() {
+        .catch(function(err) {
 
         })
         .finally( function() {
 
         });
+
+}
+
+$scope.saveTicket = function() {
+alert('saveTicket');
+  $http( {
+          method: 'POST',
+          url: './create'
+        })
+  .then(function(response) {
+    alert('success');
+  })
+  .catch( function(err) {
+
+  })
+  .finally( function() {
+
+  });
 
 }
 

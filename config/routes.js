@@ -35,10 +35,11 @@ app.post('/users/signup' , users.newUser);
 // GET create Ticket
 app.get('/tickets/create' , tickets.create);
 
-app.get('/tickets/getLookups' , tickets.getLookups)
+// GET lookups , projects , priorities , users
+app.get('/tickets/getLookups' , tickets.getLookups);
 
 // POST create Ticket
-//app.get('/tickets/create' , tickets.save);
+app.post('/tickets/create' , tickets.save);
 
 // Page not found Error
 app.use( function(req , res) {

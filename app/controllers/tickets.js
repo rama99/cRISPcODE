@@ -12,16 +12,30 @@ function connect(){
 
 module.exports.create = wrap(function *(req , res) {
 db = yield connect();
-let users = yield getUsers();
  res.render('tickets/create');
-//res.render('tickets/create' );
 });
 
 module.exports.getLookups = wrap(function * (req , res) {
+  let lookup = {};
   let users = yield getUsers();
+  let projects = yield getProjects();
+  let priorities = yield getPriorities();
+  lookup.users = users;
+  lookup.projects = projects;
+  lookup.priorities = priorities;
+
   db.close();
   res.setHeader('Content-Type', 'application/json');
-  res.send(JSON.stringify(users));
+  res.send(JSON.stringify(lookup));
+});
+
+module.exports.save = wrap(function *(req , res) {
+  db = yield connect();
+  let ticket = only(req.body , '');
+  yield db.collection("comments").insertOne();
+  db.close();
+  res.setHeader('Content-Type' , 'application/json');
+  res.send(JSON.stringify(ticket));
 });
 
 // get users from MEAN mongoDB
@@ -30,6 +44,11 @@ return db.collection("users").find({}).toArray();
 }
 
 // get priorities from MEAN mongoDB
-function getPriorities(db){
+function getPriorities(){
+return db.collection("priorities").find({}).toArray();
+}
 
+// get projects from MEAN mongoDB
+function getProjects() {
+  return db.collection("projects").find({}).toArray();
 }
