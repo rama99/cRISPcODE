@@ -35,6 +35,12 @@ app.post('/users/signup' , users.newUser);
 // GET create Ticket
 app.get('/tickets/create' , tickets.create);
 
+// GET open Tickets template
+app.get('/tickets/open' , tickets.open);
+
+// GET open Tickets data
+app.get('/tickets/openTickets' , tickets.openTickets);
+
 // GET lookups , projects , priorities , users
 app.get('/tickets/getLookups' , tickets.getLookups);
 

@@ -16,6 +16,22 @@ db = yield connect();
  res.render('tickets/create');
 });
 
+module.exports.open = wrap(function *(req , res) {
+res.render('tickets/open');
+});
+
+module.exports.openTickets = wrap(function *(req , res) {
+db = yield connect();
+// get OPEN tickets
+let openTickets = yield getOpenTickets();
+
+//
+db.close();
+res.setHeader('Content-Type' , 'application/json');
+res.send(JSON.stringify(openTickets));
+
+});
+
 module.exports.getLookups = wrap(function * (req , res) {
   let lookup = {};
   let users = yield getUsers();
@@ -36,8 +52,10 @@ module.exports.save = wrap(function *(req , res) {
 
   ticket.assignedToUserID = new ObjectID(ticket.assignedToUserID);
   ticket.deptID = new ObjectID(ticket.deptID);
-  ticket.commentss = [];
-  ticket.commentss.push(ticket.comments);
+  ticket.Allcomments = [];
+  ticket.Allcomments.push(ticket.comments);
+  ticket.createDate = new Date()
+  delete ticket["comments"];
 
   yield db.collection("tickets").insertOne(ticket);
   db.close();
@@ -47,6 +65,7 @@ module.exports.save = wrap(function *(req , res) {
 
 // get users from MEAN mongoDB
 function  getUsers(){
+  // toArray()
 return db.collection("users").find({}).toArray();
 }
 
@@ -58,4 +77,9 @@ return db.collection("priorities").find({}).toArray();
 // get projects from MEAN mongoDB
 function getProjects() {
   return db.collection("projects").find({}).toArray();
+}
+
+// get open Tickets from MEAN mongoDB
+function getOpenTickets() {
+  return db.collection("tickets").find({}).toArray();
 }

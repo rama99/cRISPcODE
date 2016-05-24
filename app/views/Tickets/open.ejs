@@ -1,0 +1,42 @@
+<html>
+<head>
+  <script src="/../scripts/jquery.min.js"></script>
+  <script src="/../scripts/bootstrap.min.js"></script>
+  <script src="/../scripts/angular.min.js"></script>
+  <script src="/../app/app.js"></script>
+  <script src="/../app/controllers/open.js"></script>
+  <link href="/../css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body ng-app="TicketApp">
+<div class="container" ng-controller="openCtrl">
+<h3>Open Tickets </h3>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Ticket ID</th>
+      <th>Title</th>
+      <th>Project</th>
+      <th>Status</th>
+      <th>Priority</th>
+      <th>Assigned To User</th>
+    </tr>
+  </thead>
+  <tbody ng-repeat="item in tickets">
+
+          <tr>
+          <td><a href="" ng-click="Edit(item._id)">{{::item._id}}</a></td>
+          <td>{{item.subject}}</td>
+          <td>{{item.deptID}}</td>
+          <td>{{item.status}}</td>
+          <td><!-- {{item.priorty}} --></td>
+          <td>{{item.assignedToUserID}}</td>
+          </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="row">
+    <a href="" ng-click="open()" id="elementtoScrollToID" class="col-md-1 col-md-offset-11" ng-show="DisplayMore" ><img src="/Images/more.png"  style="width:29px;height:29px;display:inline-block;" alt="" /></a>
+</div>
+</body>
+</html>
