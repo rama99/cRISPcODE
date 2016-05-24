@@ -33,10 +33,11 @@ $scope.GetTicketLookUps = function() {
 }
 
 $scope.saveTicket = function() {
-alert('saveTicket');
+//alert('saveTicket');
   $http( {
           method: 'POST',
-          url: './create'
+          url: './create',
+          data: $scope.details
         })
   .then(function(response) {
     alert('success');
